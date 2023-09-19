@@ -46,7 +46,22 @@ ul{
 }
 .nav-link{
     cursor:pointer;
+    transition: 0.5s;
 }
+.nav-link:after {
+    content: '';
+    position: absolute;
+    opacity: 0;  
+    top: 14px;
+    transition: 0.5s;
+  }
+  .nav-link:hover{
+    padding-top: 10px;
+  }
+  
+  .nav-link:hover:after {
+    opacity: 1;
+  }
 
 /*o mnie*/
 
@@ -99,4 +114,142 @@ ul{
 }
 .project-desc{
     color:var(--background);
+}
+
+.project-a{
+    text-decoration: none;
+}
+
+a{
+    display:block;
+    position:relative;
+    padding:0.1em 0;
+}
+
+a::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0.1em;
+    background-color:var(--background);
+    opacity:0;
+    transition: opacity 300ms, transform 300ms;
+}
+
+a:hover::after, a:focus::after{
+    opacity:1;
+    transform:translate3d(0, 0.1em, 0);
+}
+
+/* inside joke flipper*/
+.dontainer-flip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom:60px;
+}
+.flip-container{
+    perspective: 1000px;
+    width:300px;
+    height:100px;
+    position: relative;
+    cursor: pointer;
+}
+.flipper{
+    width:100%;
+    height:100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.front, .back{
+    width:100%;
+    height:100%;
+    position:absolute;
+    backface-visibility: hidden;
+}
+
+.front{
+    background-color:#2f3c7e;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transform:rotateY(0deg);
+}
+
+.back{
+    background-color: #2f3c7e;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transform:rotateY(180deg);
+}
+
+.flip-container:hover .flipper{
+    transform:rotateY(180deg);
+}
+.inside-joke{
+    color:var(--background);
+    padding:20px;
+    text-align: center;
+}
+
+/* contact */
+
+.contact-header{
+    font-size:30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-image:linear-gradient(
+        45deg,
+        rgb(249, 124, 176),
+        rgb(61, 177, 209)
+    );
+    background-size:100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-links{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:75px;
+    height:300px;
+    flex-direction: column;
+    padding:50px 0 50px 0;
+}
+
+.contact-link{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    transition:transform 250ms;
+    font-size:20px;
+}
+
+.contact-link:hover{
+    transform:scale(115%);
+}
+
+.contact-icon{
+    width:40px;
+    padding:10px;
+}
+
+/* stopka*/
+
+footer{
+    height: 80px;
+    background-color: var(--nav);
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    padding-left:20px;
+    color:var(--background);
+    font-size: 13px;
 }
